@@ -1,0 +1,19 @@
+Compiling Guide
+
+Programs Required
+
+MS Visual Studio 2003
+Source Code
+
+Installation
+
+Install MS Visual Studio 2003.
+Download Source Code to a folder of your choice.
+
+Debugging
+
+* To Do
+
+Release
+
+* To Do
