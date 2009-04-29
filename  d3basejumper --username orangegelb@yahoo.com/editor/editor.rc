@@ -1,0 +1,674 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\editor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAINFORM_DIALOG DIALOGEX 0, 0, 372, 236
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "D3 Editor Application"
+MENU IDR_MAINMENU
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_COMMAND,5,220,245,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CONSOLE,5,150,245,65,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+    CONTROL         "Tab1",IDC_SHELF,"SysTabControl32",0x0,5,5,245,30
+    CONTROL         "Tree1",IDC_ASSETGRAPH,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_TABSTOP,
+                    5,40,160,105
+END
+
+IDD_RENDERVIEW_DIALOG DIALOG  0, 0, 320, 201
+STYLE DS_SETFONT | WS_CHILD | WS_BORDER
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_HELPDIALOG_DIALOG DIALOG  0, 0, 467, 342
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Using editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,410,5,50,14
+    GROUPBOX        "Main menu",IDC_STATIC,5,5,250,50
+    LTEXT           "Asset/Open",IDC_STATIC,10,20,39,8
+    LTEXT           "Read existing asset from file resource for edition routine",
+                    IDC_STATIC,55,20,174,8
+    LTEXT           "Asset/Import",IDC_STATIC,10,30,41,8
+    LTEXT           "Build asset using import tool and setup asset for edition routine",
+                    IDC_STATIC,55,30,196,8
+    LTEXT           "Asset/Save",IDC_STATIC,10,40,38,8
+    LTEXT           "Write modified asset to file resource",IDC_STATIC,55,40,
+                    112,8
+END
+
+IDD_SHADER_EDITOR DIALOGEX 0, 0, 265, 303
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Shader editor"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Flags",IDC_STATIC,5,5,255,115
+    CONTROL         "Backface culling",IDC_FLAG_CULLING,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,15,69,10
+    CONTROL         "Collision detection",IDC_FLAG_COLLISION,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,25,73,10
+    CONTROL         "Alpha blending",IDC_FLAG_ALPHA_BLENDING,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,85,15,63,10
+    CONTROL         "Alpha testing",IDC_FLAG_ALPHA_TESTING,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,85,25,57,10
+    GROUPBOX        "Alpha blending",IDC_STATIC,10,35,245,40
+    CONTROL         "Reserved",IDC_FLAG_RESERVED1,"Button",BS_AUTOCHECKBOX | 
+                    BS_FLAT | NOT WS_VISIBLE | WS_TABSTOP,155,15,47,10
+    CONTROL         "Reserved",IDC_FLAG_RESERVED2,"Button",BS_AUTOCHECKBOX | 
+                    BS_FLAT | NOT WS_VISIBLE | WS_TABSTOP,155,25,47,10
+    COMBOBOX        IDC_ALPHA_BLENDING_SRC,15,55,84,115,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_ALPHA_BLENDING_OP,105,55,55,86,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_ALPHA_BLENDING_DST,165,55,84,116,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Source",IDC_STATIC,15,45,24,8
+    LTEXT           "Operation",IDC_STATIC,105,45,32,8
+    LTEXT           "Destination",IDC_STATIC,165,45,36,8
+    GROUPBOX        "Alpha testing",IDC_STATIC,10,75,134,40
+    COMBOBOX        IDC_ALPHA_TESTING_FUNCT,15,95,84,103,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_ALPHA_TESTING_REF,105,95,35,12,ES_AUTOHSCROLL
+    LTEXT           "Compare function",IDC_STATIC,15,85,56,8
+    LTEXT           "Reference",IDC_STATIC,105,85,34,8
+    GROUPBOX        "Color",IDC_STATIC,5,120,255,38
+    EDITTEXT        IDC_DIFFUSE_R,10,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_G,30,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_B,50,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_A,70,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Diffuse",IDC_STATIC,10,130,23,8
+    PUSHBUTTON      "...",IDC_DIFFUSE_BTN,90,140,13,12,0,WS_EX_STATICEDGE
+    EDITTEXT        IDC_SPECULAR_R,109,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_G,129,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_B,149,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_A,169,140,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Specular",IDC_STATIC,110,130,29,8
+    PUSHBUTTON      "...",IDC_SPECULAR_BTN,189,140,13,12,0,WS_EX_STATICEDGE
+    EDITTEXT        IDC_SPECULAR_POWER,209,140,45,12,ES_AUTOHSCROLL
+    LTEXT           "Power",IDC_STATIC,209,130,21,8
+    GROUPBOX        "Texture layers",IDC_STATIC,5,160,255,72
+    PUSHBUTTON      "point_blank",IDC_LAYER_0_TEXTURE_BTN,10,170,79,13,0,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_LAYER_0_UVID,90,170,20,105,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_LAYER_0_BLENDING,110,170,55,95,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_LAYER_0_CONSTANT_R,164,170,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_0_CONSTANT_G,184,170,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_0_CONSTANT_B,204,170,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_0_CONSTANT_A,224,170,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    PUSHBUTTON      "...",IDC_LAYER_0_CONSTANT_BTN,244,170,13,12,0,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "point_blank",IDC_LAYER_1_TEXTURE_BTN,10,185,79,13,0,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_LAYER_1_UVID,90,185,20,89,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_LAYER_1_BLENDING,110,185,55,81,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_LAYER_1_CONSTANT_R,164,185,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_1_CONSTANT_G,184,185,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_1_CONSTANT_B,204,185,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_1_CONSTANT_A,224,185,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    PUSHBUTTON      "...",IDC_LAYER_1_CONSTANT_BTN,244,185,13,12,0,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "point_blank",IDC_LAYER_2_TEXTURE_BTN,10,200,79,13,0,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_LAYER_2_UVID,90,200,20,76,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_LAYER_2_BLENDING,110,200,55,74,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_LAYER_2_CONSTANT_R,164,200,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_2_CONSTANT_G,184,200,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_2_CONSTANT_B,204,200,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_2_CONSTANT_A,224,200,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    PUSHBUTTON      "...",IDC_LAYER_2_CONSTANT_BTN,244,200,13,12,0,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "point_blank",IDC_LAYER_3_TEXTURE_BTN,10,215,79,13,0,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_LAYER_3_UVID,90,215,20,60,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_LAYER_3_BLENDING,110,215,55,58,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_LAYER_3_CONSTANT_R,164,215,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_3_CONSTANT_G,184,215,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_3_CONSTANT_B,204,215,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_LAYER_3_CONSTANT_A,224,215,20,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    PUSHBUTTON      "...",IDC_LAYER_3_CONSTANT_BTN,244,215,13,12,0,
+                    WS_EX_STATICEDGE
+    GROUPBOX        "Normal map",IDC_STATIC,5,233,109,28
+    PUSHBUTTON      "point_blank",IDC_NORMAL_MAP_BTN,10,244,79,13,0,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_NORMAL_MAP_UVID,90,244,20,65,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effect",IDC_STATIC,5,262,255,31
+    LTEXT           "Input troubles:",IDC_STATIC,5,295,46,8
+    LTEXT           "none",IDC_TROUBLEDESC,55,295,205,8
+    PUSHBUTTON      "No effect",IDC_EFFECT,10,275,80,12,0,WS_EX_STATICEDGE
+    GROUPBOX        "Environment map",IDC_STATIC,120,234,138,28
+    PUSHBUTTON      "point_blank",IDC_ENV_MAP_BTN,126,246,79,13,0,
+                    WS_EX_STATICEDGE
+    GROUPBOX        "Additional",IDC_STATIC,147,75,108,40
+    LTEXT           "Lightset",IDC_STATIC,153,85,26,8
+    EDITTEXT        IDC_LIGHTSET,154,96,35,12,ES_AUTOHSCROLL
+END
+
+IDD_TEXTURE_CHOOSER DIALOGEX 0, 0, 215, 110
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "OK",IDOK,170,0,45,13,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "Cancel",IDCANCEL,170,13,45,13,0,WS_EX_STATICEDGE
+    COMBOBOX        IDC_COMBO1,0,0,170,175,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Load...",IDC_BUTTON1,0,13,45,13,0,WS_EX_STATICEDGE
+    GROUPBOX        "Texture sampling",IDC_STATIC,0,25,215,85
+    COMBOBOX        IDC_MAGFILTER,5,71,65,80,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Magnification",IDC_STATIC,5,60,43,8
+    COMBOBOX        IDC_MINFILTER,75,71,65,80,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_MIPFILTER,145,71,65,85,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Minification",IDC_STATIC,75,60,36,8
+    LTEXT           "Mip-mapping",IDC_STATIC,145,60,41,8
+    LTEXT           "Max. anisotropy",IDC_STATIC,5,86,50,8
+    EDITTEXT        IDC_ANISOTROPY,5,95,65,12,ES_AUTOHSCROLL
+    LTEXT           "U-Addressing",IDC_STATIC,5,35,43,8
+    COMBOBOX        IDC_UADDRESSING,5,45,65,85,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "V-Addressing",IDC_STATIC,75,35,42,8
+    COMBOBOX        IDC_VADDRESSING,75,45,65,85,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Mipmap LOD bias:",IDC_STATIC,73,86,59,8
+    EDITTEXT        IDC_MIPMAPLODBIAS,72,95,65,12,ES_AUTOHSCROLL
+END
+
+IDD_EFFECT_EDITOR DIALOGEX 0, 0, 207, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "OK",IDC_OK_BUTTON,160,0,47,12,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "Cancel",IDC_CANCEL_BUTTON,160,12,47,12,0,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_R,0,73,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_G,40,73,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_B,80,73,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_A,120,73,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_EFFECTNAME,0,0,160,88,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "List1",IDC_ARGLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,0,13,160,60,
+                    WS_EX_STATICEDGE
+END
+
+IDD_ENGINE_INFO DIALOGEX 0, 0, 159, 76
+STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+CAPTION "Engine info"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Statistics",IDC_STATIC,3,0,152,73
+    LTEXT           "FPS:",IDC_STATIC,10,10,16,8
+    LTEXT           "BSP total:",IDC_STATIC,10,19,32,8
+    LTEXT           "BSP rendered:",IDC_STATIC,10,29,47,8
+    LTEXT           "0.0",IDC_FPS,90,10,60,8
+    LTEXT           "0",IDC_BSP_TOTAL,90,19,60,8
+    LTEXT           "0",IDC_BSP_RENDERED,90,29,60,8
+    LTEXT           "Atomics rendered:",IDC_STATIC,10,39,58,8
+    LTEXT           "0",IDC_ATOMICS_RENDERED,90,39,60,8
+    LTEXT           "Alpha-objects rendered:",IDC_STATIC,10,49,76,8
+    LTEXT           "0",IDC_ALPHA_RENDERED,90,49,60,8
+    LTEXT           "Shader cache hits:",IDC_STATIC,10,60,60,8
+    LTEXT           "0",IDC_SHADER_CACHE_HITS,90,60,60,8
+END
+
+IDD_GEOMETRY_EDITOR DIALOGEX 0, 0, 262, 33
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Geometry editor"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Effect",IDC_STATIC,5,0,255,31
+    PUSHBUTTON      "No effect",IDC_EFFECT,10,13,80,12,0,WS_EX_STATICEDGE
+END
+
+IDD_BSP_EDITOR DIALOGEX 0, 0, 184, 71
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "BSP Editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Fog properties",IDC_STATIC,6,6,174,60
+    LTEXT           "Fog type",IDC_STATIC,12,18,30,8
+    COMBOBOX        IDC_FOG_TYPE,12,28,66,86,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_FOG_R,78,28,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_FOG_G,98,28,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_FOG_B,118,28,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_FOG_A,138,28,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    PUSHBUTTON      "...",IDC_DIFFUSE_BTN,158,28,13,12,0,WS_EX_STATICEDGE
+    LTEXT           "Fog color",IDC_STATIC,78,18,30,8
+    LTEXT           "Fog start",IDC_STATIC,12,42,30,8
+    EDITTEXT        IDC_FOG_START,12,50,54,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Fog end",IDC_STATIC,66,42,27,8
+    EDITTEXT        IDC_FOG_END,66,50,54,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Fog density",IDC_STATIC,120,42,38,8
+    EDITTEXT        IDC_FOG_DENSITY,120,50,54,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+END
+
+IDD_LIGHT_EDITOR DIALOGEX 0, 0, 214, 162
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Light editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Color",IDC_STATIC,6,5,204,38
+    EDITTEXT        IDC_DIFFUSE_R,11,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_G,31,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_B,51,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_DIFFUSE_A,71,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Diffuse",IDC_STATIC,11,15,23,8
+    PUSHBUTTON      "...",IDC_DIFFUSE_BTN,91,25,13,12,0,WS_EX_STATICEDGE
+    EDITTEXT        IDC_SPECULAR_R,110,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_G,130,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_B,150,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_SPECULAR_A,170,25,20,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Specular",IDC_STATIC,111,15,29,8
+    PUSHBUTTON      "...",IDC_SPECULAR_BTN,190,25,13,12,0,WS_EX_STATICEDGE
+    GROUPBOX        "Sphere/cone",IDC_STATIC,6,43,204,65
+    EDITTEXT        IDC_RADIUS,11,64,60,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Radius",IDC_STATIC,12,54,22,8
+    LTEXT           "Attenuation",IDC_STATIC,78,54,39,8
+    EDITTEXT        IDC_ATTENUATION_0,77,64,42,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_ATTENUATION_1,119,64,42,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    EDITTEXT        IDC_ATTENUATION_2,161,64,42,12,ES_AUTOHSCROLL,
+                    WS_EX_RIGHT
+    LTEXT           "Theta",IDC_STATIC,12,80,20,8
+    LTEXT           "Phi",IDC_STATIC,54,80,10,8
+    EDITTEXT        IDC_THETA,12,90,42,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    EDITTEXT        IDC_PHI,54,90,42,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    GROUPBOX        "Additional",IDC_STATIC,6,114,204,42
+    LTEXT           "Lightset",IDC_STATIC,12,126,26,8
+    EDITTEXT        IDC_LIGHTSET,11,136,42,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+END
+
+IDD_DETAILS_GENERATOR DIALOGEX 0, 0, 196, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Details generator"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Input",IDC_STATIC,6,6,186,36
+    LTEXT           "Atomic:",IDC_STATIC,12,15,25,8
+    LTEXT           "Geometry:",IDC_STATIC,96,12,35,8
+    EDITTEXT        IDC_ATOMIC_NAME,11,24,84,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_GEOMETRY_NAME,96,24,90,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    GROUPBOX        "Output",IDC_STATIC,6,42,186,36
+    LTEXT           "Clump:",IDC_STATIC,12,51,23,8
+    EDITTEXT        IDC_OUTPUT_CLUMP_NAME,12,60,174,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    GROUPBOX        "Generator",IDC_STATIC,6,78,186,156
+    LTEXT           "Group by sphere:",IDC_STATIC,12,88,57,8
+    EDITTEXT        IDC_GROUP_SPHERE,72,88,114,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    GROUPBOX        "Detail selection",IDC_STATIC,12,102,174,114
+    COMBOBOX        IDC_DETAIL_CLASS,18,121,102,91,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Detail class:",IDC_STATIC,18,112,39,8
+    LTEXT           "Particle density:",IDC_STATIC,121,112,52,8
+    EDITTEXT        IDC_PARTICLE_DENSITY,120,121,60,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "",IDC_DETAIL_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,18,138,162,60
+    PUSHBUTTON      "Add",IDC_BUTTON1,18,201,36,12,0,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Clear",IDC_BUTTON2,54,201,36,12,0,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Generate",IDC_BUTTON3,12,219,174,12,0,WS_EX_CLIENTEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MAINFORM_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 365
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 229
+    END
+
+    IDD_RENDERVIEW_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_HELPDIALOG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 460
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 335
+    END
+
+    IDD_SHADER_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 258
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 296
+    END
+
+    IDD_TEXTURE_CHOOSER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 208
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+
+    IDD_EFFECT_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 200
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 79
+    END
+
+    IDD_ENGINE_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 152
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_GEOMETRY_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+
+    IDD_BSP_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+
+    IDD_LIGHT_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 207
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_DETAILS_GENERATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 189
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU 
+BEGIN
+    POPUP "Asset"
+    BEGIN
+        MENUITEM "Open",                        ID_ASSET_OPEN
+        MENUITEM "Import",                      ID_ASSET_IMPORT
+        MENUITEM "Save",                        ID_ASSET_SAVE
+    END
+    POPUP "Shader"
+    BEGIN
+        POPUP "Set number of texture layers"
+        BEGIN
+            MENUITEM "0",                           ID_SETNUMBEROFTEXTURELAYERS_0
+
+            MENUITEM "1",                           ID_SETNUMBEROFTEXTURELAYERS_1
+
+            MENUITEM "2",                           ID_SETNUMBEROFTEXTURELAYERS_2
+
+            MENUITEM "3",                           ID_SETNUMBEROFTEXTURELAYERS_3
+
+            MENUITEM "4",                           ID_SETNUMBEROFTEXTURELAYERS_4
+
+        END
+    END
+    POPUP "Clump"
+    BEGIN
+        POPUP "For all atomics..."
+        BEGIN
+            MENUITEM "Enable alpha (tree preset)",  ID_ENABLE_ALPHA_TREE
+            MENUITEM "Enable alpha (banister preset)", 
+                                                    ID_ENABLE_ALPHA_BANISTER
+            MENUITEM "Enable no cull",              ID_ENABLE_NO_CULL
+        END
+        MENUITEM "Force prelight...",           ID_CLUMP_FORCEPRELIGHT
+        MENUITEM "Hide all atomics",            ID_CLUMP_HIDEALLATOMICS
+        MENUITEM "Hide selected atomic",        ID_CLUMP_HIDESELECTEDATOMIC
+        MENUITEM SEPARATOR
+        MENUITEM "Delete from scene",           ID_CLUMP_DELETE
+    END
+    POPUP "Animation"
+    BEGIN
+        MENUITEM "Reset",                       ID_ANIMATION_RESETANIMATION
+        POPUP "Speed"
+        BEGIN
+            MENUITEM "1x",                          ID_SPEED_1X
+            MENUITEM "0.5x",                        ID_SPEED_0
+            MENUITEM "0.25x",                       ID_SPEED_1
+        END
+    END
+    POPUP "Tools"
+    BEGIN
+        MENUITEM "Normal map from image",       ID_TOOLS_NORMALMAPFROMTEXTURE
+
+        MENUITEM "DUDV from normal map",        ID_TOOLS_CREATEBUMPMAP
+        MENUITEM "Calculate Light Maps",        ID_TOOLS_CALCULATELIGHTMAPS32825
+
+    END
+    POPUP "Window"
+    BEGIN
+        MENUITEM "Engine info",                 ID_WINDOW_ENGINEINFO
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "Using editor",                ID_HELP_EDITORHELP
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WORLD               BITMAP                  "bmp00001.bmp"
+IDB_CLUMP               BITMAP                  "bmp00002.bmp"
+IDB_FRAME               BITMAP                  "atomic.bmp"
+IDB_ATOMIC              BITMAP                  "bitmap1.bmp"
+IDB_GEOMETRY            BITMAP                  "bmp00003.bmp"
+IDB_SHADER              BITMAP                  "bmp00004.bmp"
+IDB_LIGHT               BITMAP                  "bmp00005.bmp"
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "editor DLL"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "editor"
+            VALUE "LegalCopyright", "Copyright (C) 2004"
+            VALUE "OriginalFilename", "editor.DLL"
+            VALUE "ProductName", "editor Dynamic Link Library"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\editor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
