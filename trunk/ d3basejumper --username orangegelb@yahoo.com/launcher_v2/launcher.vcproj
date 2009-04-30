@@ -20,7 +20,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(DX9SDK)\Include&quot;;&quot;$(TinyXML)&quot;"
+				AdditionalIncludeDirectories="&quot;D:\D3 Base Jumper Sourcecode\D3 Basejumper\Sourcecode\Includes\DirectX\Include&quot;;&quot;D:\D3 Base Jumper Sourcecode\D3 Basejumper\Sourcecode\Includes\TinyXML\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -36,7 +36,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="usp10.lib tinyxml.lib dxguid.lib dxerr9.lib dinput8.lib comctl32.lib dxguid.lib d3dxof.lib d3dx9dt.lib d3d9.lib odbc32.lib odbccp32.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DX9SDK)\lib&quot;;&quot;$(TinyXML)\debug&quot;"
+				AdditionalLibraryDirectories="..\Libraries"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
 				TargetMachine="1"/>
@@ -158,6 +158,18 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\Includes\TinyXML\include\tinystr.cpp">
+			</File>
+			<File
+				RelativePath="..\Includes\TinyXML\include\tinyxml.cpp">
+			</File>
+			<File
+				RelativePath="..\Includes\TinyXML\include\tinyxmlerror.cpp">
+			</File>
+			<File
+				RelativePath="..\Includes\TinyXML\include\tinyxmlparser.cpp">
+			</File>
+			<File
 				RelativePath=".\VideoPlayer.cpp">
 			</File>
 		</Filter>
@@ -182,6 +194,12 @@
 			</File>
 			<File
 				RelativePath=".\stdafx.h">
+			</File>
+			<File
+				RelativePath="..\Includes\TinyXML\include\tinystr.h">
+			</File>
+			<File
+				RelativePath="..\Includes\TinyXML\include\tinyxml.h">
 			</File>
 			<File
 				RelativePath=".\VideoPlayer.h">
