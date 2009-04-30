@@ -152,17 +152,17 @@ CComboBox* ClauncherDlg::SetupMappingControl(CComboBox* comboBox, TiXmlElement* 
 void ClauncherDlg::Register(void)
 {
     // check registration file is present
-    FILE* licFile = fopen( "./usr/licence.txt", "r" );
-    if( !licFile )
-    {
-        // start registration dialog
-        CRegDialog regDialog( this );    
-        regDialog.DoModal();
-    }
-    else
-    {
-        fclose( licFile );
-    }
+    //FILE* licFile = fopen( "./usr/licence.txt", "r" );
+    //if( !licFile )
+    //{
+    //    // start registration dialog
+    //    CRegDialog regDialog( this );    
+    //    regDialog.DoModal();
+    //}
+    //else
+    //{
+    //    fclose( licFile );
+    //}
 }
 
 BOOL ClauncherDlg::OnInitDialog()
@@ -175,7 +175,7 @@ BOOL ClauncherDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
     // registar game copy (web-edition only)
-    Register();
+    //Register();
 
     // load config
     m_config = new TiXmlDocument( "./cfg/config.xml" );
