@@ -2,7 +2,7 @@ Compiling Guide
 
 Programs Required
 
-MS Visual Studio 2003
+MS Visual Studio 2003\n
 Source Code
 
 Installation
