@@ -26,7 +26,7 @@
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				TreatWChar_tAsBuiltInType="TRUE"
-				UsePrecompiledHeader="3"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="4"/>
@@ -209,6 +209,15 @@
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			<File
+				RelativePath=".\res\bitmap4.bmp">
+			</File>
+			<File
+				RelativePath=".\res\bitmap6.bmp">
+			</File>
+			<File
+				RelativePath=".\res\english.bmp">
+			</File>
 			<File
 				RelativePath=".\res\launcher.ico">
 			</File>

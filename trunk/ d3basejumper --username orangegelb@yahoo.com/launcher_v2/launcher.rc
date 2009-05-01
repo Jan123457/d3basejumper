@@ -147,7 +147,7 @@ BEGIN
                     WS_TABSTOP
     CONTROL         "",IDC_PITCH_SHIFT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     9,323,8,8
-    COMBOBOX        IDC_SKINNEDMESH2,156,291,131,66,CBS_DROPDOWNLIST | 
+    COMBOBOX        IDC_LANGUAGE,156,291,131,66,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
 END
 
@@ -290,6 +290,29 @@ BEGIN
 END
 
 #endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP4             BITMAP                  "res\\bitmap4.bmp"
+IDB_BITMAP5             BITMAP                  "res\\Picture_de.bmp"
+IDB_BITMAP6             BITMAP                  "res\\bitmap6.bmp"
+IDB_BITMAP7             BITMAP                  "res\\Picture_pl.bmp"
+IDB_BITMAP8             BITMAP                  "res\\english.bmp"
+#endif    // English (Australia) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

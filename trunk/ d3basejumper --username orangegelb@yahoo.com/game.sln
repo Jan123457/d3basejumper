@@ -19,10 +19,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine", "engine\engine.vcp
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "import", "import\import.vcproj", "{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "input", "input\input.vcproj", "{D48EC932-5CF4-4AC9-8B29-932DB2B3455E}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -76,11 +72,6 @@ Global
 		{8CACD851-2149-467B-A426-FCCCD6ABB76B}.FakeRelease.Build.0 = FakeRelease|Win32
 		{8CACD851-2149-467B-A426-FCCCD6ABB76B}.Release.ActiveCfg = Release|Win32
 		{8CACD851-2149-467B-A426-FCCCD6ABB76B}.Release.Build.0 = Release|Win32
-		{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}.Debug.ActiveCfg = Debug|Win32
-		{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}.FakeRelease.ActiveCfg = FakeRelease|Win32
-		{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}.FakeRelease.Build.0 = FakeRelease|Win32
-		{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}.Release.ActiveCfg = Release|Win32
-		{C79EEDFE-FEFE-4BA0-A840-ECB3479F7DF6}.Release.Build.0 = Release|Win32
 		{D48EC932-5CF4-4AC9-8B29-932DB2B3455E}.Debug.ActiveCfg = Debug|Win32
 		{D48EC932-5CF4-4AC9-8B29-932DB2B3455E}.Debug.Build.0 = Debug|Win32
 		{D48EC932-5CF4-4AC9-8B29-932DB2B3455E}.FakeRelease.ActiveCfg = FakeRelease|Win32

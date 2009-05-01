@@ -113,6 +113,7 @@ public:
     CButton m_Grass;
     CComboBox m_Crowd;
     CComboBox m_Traffic;
+	CComboBox m_Language;
     afx_msg void OnCbnSelchangeCrowd();
     afx_msg void OnCbnSelchangeTraffic();
     afx_msg void OnBnClickedGrass();
@@ -140,6 +141,7 @@ public:
     CComboBox mctrl_DecreaseTime;
     CComboBox mctrl_IncreaseMusic;
     CComboBox mctrl_DecreaseMusic;
+	CComboBox mctrl_Language;
     afx_msg void OnCbnSelchangeLeft();
     afx_msg void OnCbnSelchangeUp();
     afx_msg void OnCbnSelchangeDown();
@@ -168,4 +170,5 @@ public:
     afx_msg void OnBnClickedShadows();
     CButton m_PitchShift;
     afx_msg void OnBnClickedPitchShift();
+	afx_msg void OnCbnSelchangeLanguage();
 };
