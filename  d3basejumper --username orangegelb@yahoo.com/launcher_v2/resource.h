@@ -9,6 +9,11 @@
 #define IDB_BITMAP2                     148
 #define IDB_BITMAP3                     149
 #define IDD_REGISTER                    151
+#define IDB_BITMAP4                     153
+#define IDB_BITMAP5                     154
+#define IDB_BITMAP6                     155
+#define IDB_BITMAP7                     156
+#define IDB_BITMAP8                     157
 #define IDC_MODE                        1000
 #define IDC_REFRESH_RATE                1001
 #define IDC_FULLSCREEN                  1002
@@ -16,6 +21,7 @@
 #define IDC_START_GAME                  1004
 #define IDC_SKINNEDMESH                 1008
 #define IDC_SKINNEDMESH2                1009
+#define IDC_LANGUAGE                    1009
 #define IDC_CROWD                       1011
 #define IDC_TRAFFIC                     1012
 #define IDC_AFTERFX                     1013
@@ -69,9 +75,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        153
+#define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1036
+#define _APS_NEXT_CONTROL_VALUE         1037
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

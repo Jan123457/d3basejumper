@@ -63,6 +63,7 @@ void ClauncherDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_FOREST, m_Forest);
     DDX_Control(pDX, IDC_SHADOWS, m_Shadows);
     DDX_Control(pDX, IDC_PITCH_SHIFT, m_PitchShift);
+	DDX_Control(pDX, IDC_LANGUAGE, m_Language);
 }
 
 BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
@@ -105,6 +106,7 @@ BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
     ON_CBN_SELCHANGE(IDC_FOREST, OnCbnSelchangeForest)
     ON_BN_CLICKED(IDC_SHADOWS, OnBnClickedShadows)
     ON_BN_CLICKED(IDC_PITCH_SHIFT, OnBnClickedPitchShift)
+	ON_CBN_SELCHANGE(IDC_LANGUAGE, OnCbnSelchangeLanguage)
 END_MESSAGE_MAP()
 
 
@@ -340,6 +342,16 @@ BOOL ClauncherDlg::OnInitDialog()
     stringId = m_Forest.AddString( "1000m" );
     m_Forest.SetItemData( stringId, 100 );
 
+	// fill Language control
+    stringId = m_Language.AddString( "English" );
+    m_Language.SetItemData( stringId, 0 );
+    stringId = m_Language.AddString( "Russian" );
+    m_Language.SetItemData( stringId, 1 );
+    stringId = m_Language.AddString( "Polish" );
+    m_Language.SetItemData( stringId, 2 );
+    stringId = m_Language.AddString( "German" );
+	m_Language.SetItemData( stringId, 3 );
+
     // show crowd density
     double value;
     details->Attribute( "crowd", &value );
@@ -434,6 +446,21 @@ BOOL ClauncherDlg::OnInitDialog()
         m_PitchShift.SetCheck( 1 );
     }
 
+	// show language range
+	TiXmlElement* language = getConfigElement( "language" ); assert( language ); 
+    language->Attribute( "language", &value );
+    int ilanguage = int( value );
+    for( i=0; i<m_Language.GetCount(); i++ )
+    {
+        int itemData = int( m_Language.GetItemData( i ) );
+        if( ilanguage == itemData )
+        {
+            m_Language.SetCurSel( i );
+            optionIsSelected = true;
+            break;
+        }
+    }
+
     // show action mapping
     forAllMappings( SetupMappingControl, NULL );
     m_config->SaveFile();
@@ -471,10 +498,25 @@ void ClauncherDlg::OnPaint()
         dcMemory.CreateCompatibleDC(GetDC());
 
         CBitmap bitmap;
-        bitmap.LoadBitmap( IDB_BITMAP1 ); // eng
-        // bitmap.LoadBitmap( IDB_BITMAP3 ); // ru
-        // bitmap.LoadBitmap( IDB_BITMAP4 ); // de
-        // bitmap.LoadBitmap( IDB_BITMAP5 ); // pl
+		// load specific background image depending on the language selected
+		// Only the Russian bitmap is working the others need to be created 
+		if (m_Language.GetCurSel() == 0)
+		{
+        bitmap.LoadBitmap( IDB_BITMAP8 ); // eng
+		}
+		if (m_Language.GetCurSel() == 1)
+		{
+        bitmap.LoadBitmap( IDB_BITMAP3 ); // ru
+		}
+		if (m_Language.GetCurSel() == 2)
+		{
+        bitmap.LoadBitmap( IDB_BITMAP7 ); // pl
+		}
+		if (m_Language.GetCurSel() == 3)
+		{
+        bitmap.LoadBitmap( IDB_BITMAP5 ); // de
+		}
+
         CBitmap *pbmOriginal = dcMemory.SelectObject(&bitmap);
 
         // draw bitmap
@@ -516,6 +558,7 @@ void ClauncherDlg::OnPaint()
         m_Forest.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         m_Shadows.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         m_PitchShift.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
+		m_Language.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
 
         // draw all
         CDialog::OnPaint();
@@ -1090,6 +1133,21 @@ void ClauncherDlg::OnBnClickedPitchShift()
     {
         sound->SetAttribute( "pitchShift", 0 );
     }
+
+    // save config
+    m_config->SaveFile();
+}
+
+void ClauncherDlg::OnCbnSelchangeLanguage()
+{
+	// retrieve configuration element
+    TiXmlElement* language = getConfigElement( "language" ); assert( language );  
+	
+	int iLanguage = int( m_Language.GetItemData( m_Language.GetCurSel()));
+
+    language->SetAttribute( "language", iLanguage );
+	// refresh background image to reflect language selected
+	ClauncherDlg::OnPaint(); 
 
     // save config
     m_config->SaveFile();

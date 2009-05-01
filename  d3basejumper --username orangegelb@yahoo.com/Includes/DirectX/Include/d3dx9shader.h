@@ -76,41 +76,17 @@
 //
 //----------------------------------------------------------------------------
 
-#define D3DXSHADER_DEBUG                          (1 << 0)
-#define D3DXSHADER_SKIPVALIDATION                 (1 << 1)
-#define D3DXSHADER_SKIPOPTIMIZATION               (1 << 2)
-#define D3DXSHADER_PACKMATRIX_ROWMAJOR            (1 << 3)
-#define D3DXSHADER_PACKMATRIX_COLUMNMAJOR         (1 << 4)
-#define D3DXSHADER_PARTIALPRECISION               (1 << 5)
-#define D3DXSHADER_FORCE_VS_SOFTWARE_NOOPT        (1 << 6)
-#define D3DXSHADER_FORCE_PS_SOFTWARE_NOOPT        (1 << 7)
-#define D3DXSHADER_NO_PRESHADER                   (1 << 8)
-#define D3DXSHADER_AVOID_FLOW_CONTROL             (1 << 9)
-#define D3DXSHADER_PREFER_FLOW_CONTROL            (1 << 10)
-#define D3DXSHADER_ENABLE_BACKWARDS_COMPATIBILITY (1 << 12)
-#define D3DXSHADER_IEEE_STRICTNESS                (1 << 13)
-#define D3DXSHADER_USE_LEGACY_D3DX9_31_DLL        (1 << 16)
-
-
-// optimization level flags
-#define D3DXSHADER_OPTIMIZATION_LEVEL0            (1 << 14)
-#define D3DXSHADER_OPTIMIZATION_LEVEL1            0
-#define D3DXSHADER_OPTIMIZATION_LEVEL2            ((1 << 14) | (1 << 15))
-#define D3DXSHADER_OPTIMIZATION_LEVEL3            (1 << 15)
-
-
-
-//----------------------------------------------------------------------------
-// D3DXFRAGMENT flags:
-// -------------------
-
-#define D3DXFRAGMENT_LARGEADDRESSAWARE            (1 << 17)
-
-//----------------------------------------------------------------------------
-// D3DXCONSTTABLE flags:
-// -------------------
-
-#define D3DXCONSTTABLE_LARGEADDRESSAWARE          (1 << 17)
+#define D3DXSHADER_DEBUG                    (1 << 0)
+#define D3DXSHADER_SKIPVALIDATION           (1 << 1)
+#define D3DXSHADER_SKIPOPTIMIZATION         (1 << 2)
+#define D3DXSHADER_PACKMATRIX_ROWMAJOR      (1 << 3)
+#define D3DXSHADER_PACKMATRIX_COLUMNMAJOR   (1 << 4)
+#define D3DXSHADER_PARTIALPRECISION         (1 << 5)
+#define D3DXSHADER_FORCE_VS_SOFTWARE_NOOPT  (1 << 6)
+#define D3DXSHADER_FORCE_PS_SOFTWARE_NOOPT  (1 << 7)
+#define D3DXSHADER_NO_PRESHADER             (1 << 8)
+#define D3DXSHADER_AVOID_FLOW_CONTROL       (1 << 9)
+#define D3DXSHADER_PREFER_FLOW_CONTROL      (1 << 10)
 
 
 
@@ -121,11 +97,7 @@
 // Strings can be used as handles.  However, handles are not always strings.
 //----------------------------------------------------------------------------
 
-#ifndef D3DXFX_LARGEADDRESS_HANDLE
 typedef LPCSTR D3DXHANDLE;
-#else
-typedef UINT_PTR D3DXHANDLE;
-#endif
 typedef D3DXHANDLE *LPD3DXHANDLE;
 
 
@@ -231,7 +203,6 @@ typedef enum _D3DXPARAMETER_TYPE
     D3DXPT_VERTEXSHADER,
     D3DXPT_PIXELFRAGMENT,
     D3DXPT_VERTEXFRAGMENT,
-    D3DXPT_UNSUPPORTED,
 
     // force 32-bit size enum
     D3DXPT_FORCE_DWORD = 0x7fffffff
@@ -875,8 +846,6 @@ HRESULT WINAPI
 // Parameters:
 //  pFunction
 //      Pointer to the function DWORD stream
-//  Flags
-//      See D3DXCONSTTABLE_xxx
 //  ppConstantTable
 //      Returns a ID3DXConstantTable object which can be used to set
 //      shader constants to the device.  Alternatively, an application can
@@ -887,12 +856,6 @@ HRESULT WINAPI
 HRESULT WINAPI
     D3DXGetShaderConstantTable(
         CONST DWORD*                    pFunction,
-        LPD3DXCONSTANTTABLE*            ppConstantTable);
-
-HRESULT WINAPI
-    D3DXGetShaderConstantTableEx(
-        CONST DWORD*                    pFunction,
-        DWORD                           Flags,
         LPD3DXCONSTANTTABLE*            ppConstantTable);
 
 
@@ -1027,8 +990,6 @@ HRESULT WINAPI
 //      Pointer to the device on which to create the shaders
 //  ShaderCacheSize
 //      Size of the shader cache
-//  Flags
-//      See D3DXFRAGMENT_xxx flags
 //  ppFragmentLinker
 //      pointer to a memory location to put the created interface pointer
 //
@@ -1040,102 +1001,6 @@ HRESULT WINAPI
         UINT                            ShaderCacheSize,
         LPD3DXFRAGMENTLINKER*           ppFragmentLinker);
 
-HRESULT WINAPI
-    D3DXCreateFragmentLinkerEx(
-        LPDIRECT3DDEVICE9               pDevice,
-        UINT                            ShaderCacheSize,
-        DWORD                           Flags,
-        LPD3DXFRAGMENTLINKER*           ppFragmentLinker);
-
-
-//----------------------------------------------------------------------------
-// D3DXPreprocessShader:
-// ---------------------
-// Runs the preprocessor on the specified shader or effect, but does
-// not actually compile it.  This is useful for evaluating the #includes
-// and #defines in a shader and then emitting a reformatted token stream
-// for debugging purposes or for generating a self-contained shader.
-//
-// Parameters:
-//  pSrcFile
-//      Source file name
-//  hSrcModule
-//      Module handle. if NULL, current module will be used
-//  pSrcResource
-//      Resource name in module
-//  pSrcData
-//      Pointer to source code
-//  SrcDataLen
-//      Size of source code, in bytes
-//  pDefines
-//      Optional NULL-terminated array of preprocessor macro definitions.
-//  pInclude
-//      Optional interface pointer to use for handling #include directives.
-//      If this parameter is NULL, #includes will be honored when assembling
-//      from file, and will error when assembling from resource or memory.
-//  ppShaderText
-//      Returns a buffer containing a single large string that represents
-//      the resulting formatted token stream
-//  ppErrorMsgs
-//      Returns a buffer containing a listing of errors and warnings that were
-//      encountered during assembly.  If you are running in a debugger,
-//      these are the same messages you will see in your debug output.
-//----------------------------------------------------------------------------
-
-HRESULT WINAPI 
-    D3DXPreprocessShaderFromFileA(
-        LPCSTR                       pSrcFile,
-        CONST D3DXMACRO*             pDefines,
-        LPD3DXINCLUDE                pInclude,
-        LPD3DXBUFFER*                ppShaderText,
-        LPD3DXBUFFER*                ppErrorMsgs);
-                                             
-HRESULT WINAPI 
-    D3DXPreprocessShaderFromFileW(
-        LPCWSTR                      pSrcFile,
-        CONST D3DXMACRO*             pDefines,
-        LPD3DXINCLUDE                pInclude,
-        LPD3DXBUFFER*                ppShaderText,
-        LPD3DXBUFFER*                ppErrorMsgs);
-
-#ifdef UNICODE
-#define D3DXPreprocessShaderFromFile D3DXPreprocessShaderFromFileW
-#else
-#define D3DXPreprocessShaderFromFile D3DXPreprocessShaderFromFileA
-#endif
-                                             
-HRESULT WINAPI 
-    D3DXPreprocessShaderFromResourceA(
-        HMODULE                      hSrcModule,
-        LPCSTR                       pSrcResource,
-        CONST D3DXMACRO*             pDefines,
-        LPD3DXINCLUDE                pInclude,
-        LPD3DXBUFFER*                ppShaderText,
-        LPD3DXBUFFER*                ppErrorMsgs);
-
-HRESULT WINAPI 
-    D3DXPreprocessShaderFromResourceW(
-        HMODULE                      hSrcModule,
-        LPCWSTR                      pSrcResource,
-        CONST D3DXMACRO*             pDefines,
-        LPD3DXINCLUDE                pInclude,
-        LPD3DXBUFFER*                ppShaderText,
-        LPD3DXBUFFER*                ppErrorMsgs);
-
-#ifdef UNICODE
-#define D3DXPreprocessShaderFromResource D3DXPreprocessShaderFromResourceW
-#else
-#define D3DXPreprocessShaderFromResource D3DXPreprocessShaderFromResourceA
-#endif
-
-HRESULT WINAPI 
-    D3DXPreprocessShader(
-        LPCSTR                       pSrcData,
-        UINT                         SrcDataSize,
-        CONST D3DXMACRO*             pDefines,
-        LPD3DXINCLUDE                pInclude,
-        LPD3DXBUFFER*                ppShaderText,
-        LPD3DXBUFFER*                ppErrorMsgs);
 
 
 #ifdef __cplusplus
