@@ -23,6 +23,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				OptimizeForProcessor="1"
+				AdditionalIncludeDirectories="&quot;D:\D3 Base Jumper Sourcecode\SVN\Includes\TinyXML\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -39,9 +40,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="tinyxml.lib"
 				OutputFile="../../game/sys/language-d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="..\Libraries"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Debug/language-d.pdb"
 				SubSystem="2"
@@ -183,6 +186,24 @@
 		</Filter>
 		<File
 			RelativePath=".\language.rc">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinystr.cpp">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinystr.h">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinyxml.cpp">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinyxml.h">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinyxmlerror.cpp">
+		</File>
+		<File
+			RelativePath="..\Includes\TinyXML\include\tinyxmlparser.cpp">
 		</File>
 	</Files>
 	<Globals>

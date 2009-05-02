@@ -22,3 +22,9 @@
 #include <winuser.h>
 #include <windowsx.h>
 #include <tchar.h>
+// XML includes
+#include "tinyxml.h"
+
+// Implementation
+TiXmlDocument*       m_config;
+

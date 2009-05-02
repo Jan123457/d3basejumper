@@ -447,8 +447,7 @@ BOOL ClauncherDlg::OnInitDialog()
     }
 
 	// show language range
-	TiXmlElement* language = getConfigElement( "language" ); assert( language ); 
-    language->Attribute( "language", &value );
+    details->Attribute( "language", &value );
     int ilanguage = int( value );
     for( i=0; i<m_Language.GetCount(); i++ )
     {
@@ -499,28 +498,28 @@ void ClauncherDlg::OnPaint()
 
         CBitmap bitmap;
 		// load specific background image depending on the language selected
-		// Only the Russian bitmap is working the others need to be created 
+		// Only the english and german bitmaps are working the others need to be created 
 		if (m_Language.GetCurSel() == 0)
 		{
-        bitmap.LoadBitmap( IDB_BITMAP8 ); // eng
+        bitmap.LoadBitmap( IDB_BITMAP3 ); // eng
 		}
 		if (m_Language.GetCurSel() == 1)
 		{
-        bitmap.LoadBitmap( IDB_BITMAP3 ); // ru
+        bitmap.LoadBitmap( IDB_BITMAP1 ); // ru
 		}
 		if (m_Language.GetCurSel() == 2)
 		{
-        bitmap.LoadBitmap( IDB_BITMAP7 ); // pl
+        bitmap.LoadBitmap( IDB_BITMAP4 ); // pl
 		}
 		if (m_Language.GetCurSel() == 3)
 		{
-        bitmap.LoadBitmap( IDB_BITMAP5 ); // de
+        bitmap.LoadBitmap( IDB_BITMAP1 ); // de
 		}
 
         CBitmap *pbmOriginal = dcMemory.SelectObject(&bitmap);
 
         // draw bitmap
-        GetDC()->BitBlt( 0,0,640,552, &dcMemory, 0,0, SRCCOPY );
+        GetDC()->BitBlt( 0,0,821,552, &dcMemory, 0,0, SRCCOPY );
 
         // invalidate all controls
         m_Adapter.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
@@ -1141,11 +1140,11 @@ void ClauncherDlg::OnBnClickedPitchShift()
 void ClauncherDlg::OnCbnSelchangeLanguage()
 {
 	// retrieve configuration element
-    TiXmlElement* language = getConfigElement( "language" ); assert( language );  
+    TiXmlElement* details = getConfigElement( "details" ); assert( details );  
 	
 	int iLanguage = int( m_Language.GetItemData( m_Language.GetCurSel()));
 
-    language->SetAttribute( "language", iLanguage );
+    details->SetAttribute( "language", iLanguage );
 	// refresh background image to reflect language selected
 	ClauncherDlg::OnPaint(); 
 
