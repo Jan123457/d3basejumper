@@ -251,6 +251,9 @@
 			<File
 				RelativePath=".\res\polish.bmp">
 			</File>
+			<File
+				RelativePath=".\res\russian.bmp">
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\res\launcher.manifest">
