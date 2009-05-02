@@ -4,6 +4,9 @@
 #include "../shared/product_version.h"
 #include "../shared/language.h"
 #include "../gameplay/version.h"
+#include <string>
+using namespace std;
+
 
 using namespace ccor;
 
@@ -45,10 +48,24 @@ static void processUnicodeFormatting(std::wstring& unicodeString)
     unicodeString = result;
 }
 
+TiXmlElement* getConfigElement(const char* name)
+{
+    TiXmlNode* child = m_config->FirstChild(); assert( child );
+    if( child != NULL ) do 
+    {
+        if( child->Type() == TiXmlNode::ELEMENT && strcmp( child->Value(), name ) == 0 )
+        {
+            return static_cast<TiXmlElement*>( child );
+        }
+        child = child->NextSibling();
+    }
+    while( child != NULL );
+    return NULL;
+}
+
 /**
  * ILanguage implementation
  */
-
 class Language : public EntityBase, 
                  virtual public language::ILanguage
 {
@@ -105,20 +122,106 @@ public:
     // EntityBase
     virtual void __stdcall entityInit(Object * p) 
     {
-            // open developer resource
-            FILE* file = fopen( "./lng/language.txt", "rb" );
-            if( !file ) throw Exception( "External language resource si not found!" );
-            // read resource
-            fseek( file, 0, SEEK_END );
-            unsigned int dataSize = ftell( file );
-            char* data = new char[dataSize];
-            fseek( file, 0, SEEK_SET );
-            fread( data, dataSize, 1, file );
-            fclose( file );
-            // build strings
-            buildUnicodeStrings( dataSize, data );
-            delete[] data;
-            unsigned int numStrings = _unicodeStrings.size();        
+		    // load config
+			m_config = new TiXmlDocument( "./cfg/config.xml" );
+			bool configIsLoaded = m_config->LoadFile();
+			assert( configIsLoaded );
+
+			// Check config for users language
+			TiXmlElement* details = getConfigElement( "details" ); assert( details );  
+			int langID;
+			details->Attribute( "language", &langID );
+
+			// Strings to make path to correct language file
+			char *slanguagefile = "language.txt";
+			char *path = "./lng/";
+
+			// load specific language depending on the language selected
+			if (langID == 0)
+			{
+				 // eng
+				FILE* file = fopen( "./lng/english.txt", "rb" );
+				if( !file ) throw Exception( "External language file was not found!" );
+				// read resource
+				fseek( file, 0, SEEK_END );
+				unsigned int dataSize = ftell( file );
+				char* data = new char[dataSize];
+				fseek( file, 0, SEEK_SET );
+				fread( data, dataSize, 1, file );
+				fclose( file );
+				// build strings
+				buildUnicodeStrings( dataSize, data );
+				delete[] data;
+				unsigned int numStrings = _unicodeStrings.size();
+			}
+			if (langID == 1)
+			{
+				// ru
+				FILE* file = fopen( "./lng/russian.txt", "rb" );
+				if( !file ) throw Exception( "External language file was not found!" );
+				// read resource
+				fseek( file, 0, SEEK_END );
+				unsigned int dataSize = ftell( file );
+				char* data = new char[dataSize];
+				fseek( file, 0, SEEK_SET );
+				fread( data, dataSize, 1, file );
+				fclose( file );
+				// build strings
+				buildUnicodeStrings( dataSize, data );
+				delete[] data;
+				unsigned int numStrings = _unicodeStrings.size();
+			}
+			if (langID == 2)
+			{
+				// pl
+				FILE* file = fopen( "./lng/polish.txt", "rb" );
+				if( !file ) throw Exception( "External language file was not found!" );
+				// read resource
+				fseek( file, 0, SEEK_END );
+				unsigned int dataSize = ftell( file );
+				char* data = new char[dataSize];
+				fseek( file, 0, SEEK_SET );
+				fread( data, dataSize, 1, file );
+				fclose( file );
+				// build strings
+				buildUnicodeStrings( dataSize, data );
+				delete[] data;
+				unsigned int numStrings = _unicodeStrings.size();
+			}
+			if (langID == 3)
+			{
+				// de
+				FILE* file = fopen( "./lng/deutsch.txt", "rb" );
+				if( !file ) throw Exception( "External language file was not found!" );
+				// read resource
+				fseek( file, 0, SEEK_END );
+				unsigned int dataSize = ftell( file );
+				char* data = new char[dataSize];
+				fseek( file, 0, SEEK_SET );
+				fread( data, dataSize, 1, file );
+				fclose( file );
+				// build strings
+				buildUnicodeStrings( dataSize, data );
+				delete[] data;
+				unsigned int numStrings = _unicodeStrings.size();
+			}
+			// add strings together
+			//strcat("./lng", slanguagefile);
+
+			// load language text file
+            //FILE* file = fopen( "./lng/language.txt", "rb" );
+            //if( !file ) throw Exception( "External language file was not found!" );
+            //// read resource
+            //fseek( file, 0, SEEK_END );
+            //unsigned int dataSize = ftell( file );
+            //char* data = new char[dataSize];
+            //fseek( file, 0, SEEK_SET );
+            //fread( data, dataSize, 1, file );
+            //fclose( file );
+            //// build strings
+            //buildUnicodeStrings( dataSize, data );
+            //delete[] data;
+            //unsigned int numStrings = _unicodeStrings.size();        
     }
     virtual void __stdcall entityAct(float dt) 
     {
