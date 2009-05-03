@@ -513,7 +513,7 @@ void ClauncherDlg::OnPaint()
 		}
 		if (m_Language.GetCurSel() == 3)
 		{
-        bitmap.LoadBitmap( IDB_BITMAP1 ); // de
+        bitmap.LoadBitmap( IDB_BITMAP8 ); // de
 		}
 
         CBitmap *pbmOriginal = dcMemory.SelectObject(&bitmap);

@@ -9,10 +9,10 @@
 #define IDD_REGISTER                    151
 #define IDB_BITMAP5                     154
 #define IDB_BITMAP7                     156
-#define IDB_BITMAP1                     161
 #define IDB_BITMAP3                     162
 #define IDB_BITMAP4                     163
 #define IDB_BITMAP6                     164
+#define IDB_BITMAP8                     165
 #define IDC_MODE                        1000
 #define IDC_REFRESH_RATE                1001
 #define IDC_FULLSCREEN                  1002
@@ -74,7 +74,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        165
+#define _APS_NEXT_RESOURCE_VALUE        166
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1037
 #define _APS_NEXT_SYMED_VALUE           101

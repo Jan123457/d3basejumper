@@ -222,6 +222,9 @@
 				RelativePath=".\res\bitmap6.bmp">
 			</File>
 			<File
+				RelativePath=".\res\deutsch.bmp">
+			</File>
+			<File
 				RelativePath=".\res\english.bmp">
 			</File>
 			<File
