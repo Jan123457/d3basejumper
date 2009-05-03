@@ -349,7 +349,7 @@ BOOL ClauncherDlg::OnInitDialog()
     m_Language.SetItemData( stringId, 1 );
     stringId = m_Language.AddString( "Polish" );
     m_Language.SetItemData( stringId, 2 );
-    stringId = m_Language.AddString( "German" );
+    stringId = m_Language.AddString( "Deutsch" );
 	m_Language.SetItemData( stringId, 3 );
 
     // show crowd density
