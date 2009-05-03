@@ -299,10 +299,10 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
 // Bitmap
 //
 
-IDB_BITMAP1             BITMAP                  "res\\german.bmp"
 IDB_BITMAP3             BITMAP                  "res\\english.bmp"
 IDB_BITMAP4             BITMAP                  "res\\polish.bmp"
 IDB_BITMAP6             BITMAP                  "res\\russian.bmp"
+IDB_BITMAP8             BITMAP                  "res\\deutsch.bmp"
 #endif    // English (Australia) resources
 /////////////////////////////////////////////////////////////////////////////
 
