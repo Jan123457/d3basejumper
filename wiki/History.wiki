@@ -2,7 +2,7 @@ Version XX
 
 *Sourcecode released to public.*
 
-Changelog
+*Changelog*
 
 1) Added option for users to select different lanugages
 
@@ -18,6 +18,6 @@ Default mode with active and coming events. Only lets you jump certain missions 
 
 3) Added option for users to jump any location regardless of the weather
 
-In progress
+*In progress*
 
 1) Add option to allow user to change between meters and feet
