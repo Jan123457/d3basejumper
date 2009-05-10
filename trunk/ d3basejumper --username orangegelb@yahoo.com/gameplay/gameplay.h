@@ -51,6 +51,8 @@ private:
     bool                  _isAegisActive;       // evaluation protection
     bool                  _isUnsafeCleanup;     // unsafe to perform gameplay cleanup
     bool                  _pitchShiftIsEnabled; // pitch shift is enabled
+	bool                  _weatherJumpingIsEnabled; // jumping in all weathers is enabled
+	bool                  _freeModeIsEnabled; // allow all events at all locations
     TiXmlDocuments        _userTournaments;     // container for user tournament files
     StringPointers        _userStrings;         // strings cache (random usage)
     Missions              _userMissions;        // container for user missions
@@ -107,6 +109,8 @@ public:
     inline bool getUnsafeCleanup(void) { return _isUnsafeCleanup; }
     inline void setUnsafeCleanup(bool isUnsafeCleanup) { _isUnsafeCleanup = isUnsafeCleanup; }
     inline bool pitchShiftIsEnabled(void) { return _pitchShiftIsEnabled; }
+	inline bool weatherJumpingIsEnabled(void) { return _weatherJumpingIsEnabled; }
+	inline bool freeModeIsEnabled(void) { return _freeModeIsEnabled; }
 public:
     static Gameplay*            iGameplay;
     static engine::IEngine*     iEngine;

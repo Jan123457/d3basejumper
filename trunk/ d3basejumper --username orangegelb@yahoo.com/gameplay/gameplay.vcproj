@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="gameplay"
 	ProjectGUID="{4341B448-F769-4ECE-A934-9F27E8E6CFF3}"
+	RootNamespace="gameplay"
 	SccProjectName=""
 	SccLocalPath="">
 	<Platforms>

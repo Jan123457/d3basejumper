@@ -137,7 +137,8 @@
 			<Tool
 				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"/>
+				Name="VCWebDeploymentTool"
+				ExcludedFromBuild="TRUE"/>
 			<Tool
 				Name="VCManagedWrapperGeneratorTool"/>
 			<Tool

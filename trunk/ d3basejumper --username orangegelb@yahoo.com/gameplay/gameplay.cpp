@@ -320,6 +320,12 @@ void Gameplay::entityInit(Object * p)
     xmlSound->Attribute( "pitchShift", &pitchShift );
     _pitchShiftIsEnabled = ( pitchShift != 0 );   
 
+	// read jumping in all weathers option    
+    TiXmlElement* details = Gameplay::iGameplay->getConfigElement( "details" ); assert( details );
+    int weather;
+    details->Attribute( "weather", &weather );
+    _weatherJumpingIsEnabled = ( weather != 0 );  
+
     // setup random number generation
     getCore()->getRandToolkit()->setSeed( GetTickCount() );
 

@@ -169,6 +169,10 @@ public:
     afx_msg void OnCbnSelchangeForest();
     afx_msg void OnBnClickedShadows();
     CButton m_PitchShift;
+	CButton m_Weather;
+	CButton m_Freemode;
     afx_msg void OnBnClickedPitchShift();
 	afx_msg void OnCbnSelchangeLanguage();
+	afx_msg void OnBnClickedWeather();
+	afx_msg void OnBnClickedFreemode();
 };

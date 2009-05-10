@@ -28,7 +28,12 @@ TournamentSource::TournamentSource(unsigned int locationId, Career* career)
         database::TournamentInfo* tournamentInfo = database::TournamentInfo::getRecord( i );
         // filter tournaments from this location
         if( tournamentInfo->locationId == locationId )
-        {            
+        {
+			if ( Gameplay::iGameplay->freeModeIsEnabled() )
+			{
+				_tournaments.push_back( i );
+				break;
+			}
             // boogie tournament?
             if( tournamentInfo->type == database::tfBoogie )
             {

@@ -169,7 +169,7 @@ static LocationInfo::ExitPoint ostankinoExitPoints[] =
 
 static LocationInfo::ExitPoint caveExitPoints[] = 
 {
-    { 126, "Enclosure01", 6.0f },
+    { 126, "Enclosure01", 6.0f }, 
     { 0, NULL }
 };
 

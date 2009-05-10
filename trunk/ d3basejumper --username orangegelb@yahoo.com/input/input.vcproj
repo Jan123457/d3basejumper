@@ -43,7 +43,7 @@
 				OutputFile="../../game/sys/input.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(DX9SDK)\lib"
+				AdditionalLibraryDirectories="..\Libraries"
 				ProgramDatabaseFile=".\Release/input.pdb"
 				SubSystem="2"
 				ImportLibrary=".\Release/input.lib"
