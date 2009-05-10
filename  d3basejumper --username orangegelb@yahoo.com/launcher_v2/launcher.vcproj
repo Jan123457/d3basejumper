@@ -20,7 +20,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;D:\D3 Base Jumper Sourcecode\D3 Basejumper\Sourcecode\Includes\DirectX\Include&quot;;&quot;D:\D3 Base Jumper Sourcecode\D3 Basejumper\Sourcecode\Includes\TinyXML\include&quot;"
+				AdditionalIncludeDirectories="..\Includes\DirectX\Include;..\Includes\TinyXML\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"

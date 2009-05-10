@@ -64,6 +64,8 @@ void ClauncherDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_SHADOWS, m_Shadows);
     DDX_Control(pDX, IDC_PITCH_SHIFT, m_PitchShift);
 	DDX_Control(pDX, IDC_LANGUAGE, m_Language);
+	DDX_Control(pDX, IDC_WEATHER, m_Weather);
+	DDX_Control(pDX, IDC_FREEMODE, m_Freemode);
 }
 
 BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
@@ -107,6 +109,8 @@ BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
     ON_BN_CLICKED(IDC_SHADOWS, OnBnClickedShadows)
     ON_BN_CLICKED(IDC_PITCH_SHIFT, OnBnClickedPitchShift)
 	ON_CBN_SELCHANGE(IDC_LANGUAGE, OnCbnSelchangeLanguage)
+	ON_BN_CLICKED(IDC_WEATHER, OnBnClickedWeather)
+	ON_BN_CLICKED(IDC_FREEMODE, OnBnClickedFreemode)
 END_MESSAGE_MAP()
 
 
@@ -460,6 +464,30 @@ BOOL ClauncherDlg::OnInitDialog()
         }
     }
 
+	// show jump in all weathers option
+    int weather;
+    details->Attribute( "weather", &weather );
+    if( weather == 0 )
+    {
+        m_Weather.SetCheck( 0 );
+    }
+    else
+    {
+        m_Weather.SetCheck( 1 );
+    }
+
+	// show jump free mode / career option
+    int freemode;
+    details->Attribute( "freemode", &freemode );
+    if( freemode == 0 )
+    {
+        m_Freemode.SetCheck( 0 );
+    }
+    else
+    {
+        m_Freemode.SetCheck( 1 );
+    }
+
     // show action mapping
     forAllMappings( SetupMappingControl, NULL );
     m_config->SaveFile();
@@ -558,7 +586,8 @@ void ClauncherDlg::OnPaint()
         m_Shadows.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         m_PitchShift.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
 		m_Language.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
-
+		m_Weather.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
+		m_Freemode.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         // draw all
         CDialog::OnPaint();
 	}
@@ -1139,7 +1168,7 @@ void ClauncherDlg::OnBnClickedPitchShift()
 
 void ClauncherDlg::OnCbnSelchangeLanguage()
 {
-	// retrieve configuration element
+	// retrieve configuration element for selected language
     TiXmlElement* details = getConfigElement( "details" ); assert( details );  
 	
 	int iLanguage = int( m_Language.GetItemData( m_Language.GetCurSel()));
@@ -1150,4 +1179,45 @@ void ClauncherDlg::OnCbnSelchangeLanguage()
 
     // save config
     m_config->SaveFile();
+}
+
+void ClauncherDlg::OnBnClickedWeather()
+{
+	// retrieve configuration element for jumping in all weathers
+    TiXmlElement* details = getConfigElement( "details" ); assert( details );
+
+    // change settings
+    int checkStatus = m_Weather.GetCheck();
+    if( checkStatus )
+    {
+        details->SetAttribute( "weather", 1 );
+    }
+    else
+    {
+        details->SetAttribute( "weather", 0 );
+    }
+
+    // save config
+    m_config->SaveFile();
+}
+
+
+void ClauncherDlg::OnBnClickedFreemode()
+{
+	// retrieve configuration element for freemode
+	TiXmlElement* details = getConfigElement( "details" ); assert( details );
+
+	// change settings
+	int checkStatus = m_Freemode.GetCheck();
+	if( checkStatus )
+	{
+		details->SetAttribute( "freemode", 1 );
+	}
+	else
+	{
+		details->SetAttribute( "freemode", 0 );
+	}
+
+	// save config
+	m_config->SaveFile();
 }

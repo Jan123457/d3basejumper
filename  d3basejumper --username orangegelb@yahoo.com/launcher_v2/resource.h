@@ -31,6 +31,9 @@
 #define IDC_OCX1                        1017
 #define IDC_FOREST                      1017
 #define IDC_PITCH_SHIFT                 1018
+#define IDC_WEATHER                     1019
+#define IDC_WEATHER2                    1020
+#define IDC_FREEMODE                    1020
 #define IDC_SLIDER1                     1032
 #define IDC_FIRSTPERSONMODE             1033
 #define IDC_THIRDPERSONMODE             1034
@@ -76,7 +79,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        166
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1037
+#define _APS_NEXT_CONTROL_VALUE         1060
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

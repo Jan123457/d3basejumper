@@ -256,9 +256,6 @@
 			<File
 				RelativePath="..\Includes\TinyXML\include\tinyxmlparser.cpp">
 			</File>
-			<File
-				RelativePath="..\Includes\TinyXML\include\xmltest.cpp">
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -271,9 +268,6 @@
 			</File>
 			<File
 				RelativePath="..\shared\mainwnd.h">
-			</File>
-			<File
-				RelativePath="..\Includes\TinyXML\include\tinystr.h">
 			</File>
 			<File
 				RelativePath="..\Includes\TinyXML\include\tinyxml.h">
