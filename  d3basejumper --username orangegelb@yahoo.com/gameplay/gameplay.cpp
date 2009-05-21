@@ -326,6 +326,11 @@ void Gameplay::entityInit(Object * p)
     details->Attribute( "weather", &weather );
     _weatherJumpingIsEnabled = ( weather != 0 );  
 
+	// read free jumping mode  
+    int freemode;
+    details->Attribute( "freemode", &freemode );
+    _freeModeIsEnabled = ( freemode != 0 ); 
+
     // setup random number generation
     getCore()->getRandToolkit()->setSeed( GetTickCount() );
 

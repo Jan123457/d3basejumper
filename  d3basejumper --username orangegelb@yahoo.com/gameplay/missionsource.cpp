@@ -193,6 +193,11 @@ BrowserSource* MissionSource::browse(unsigned int itemId, Scene* scene, MissionB
         #ifdef GAMEPLAY_DEVELOPER_EDITION
             rankIsEnough = true;
         #endif
+		// if freejumping mode is enabled we don't care about the players rank
+		if ( Gameplay::iGameplay->_freeModeIsEnabled )
+		{
+			rankIsEnough = true;
+		}
         if( rankIsEnough )
         {
             // check mission time
@@ -200,14 +205,23 @@ BrowserSource* MissionSource::browse(unsigned int itemId, Scene* scene, MissionB
             #ifdef GAMEPLAY_DEVELOPER_EDITION
                 timeIsEnough = true;
             #endif
+			// if freejumping mode is enabled we don't care about the time
+			if ( Gameplay::iGameplay->_freeModeIsEnabled )
+			{
+				timeIsEnough = true;
+			}
             if( timeIsEnough )
             {
-                // start mission
-                #ifndef GAMEPLAY_DEVELOPER_EDITION
-                    #ifndef GAMEPLAY_DEMOVERSION
-                        scene->passHoldingTime( missionInfo->missionTime );
-                    #endif
-                #endif
+				// if freejumping mode is enabled we don't care about passing the time to the engine
+				if ( !Gameplay::iGameplay->_freeModeIsEnabled )
+				{
+					// start mission
+					#ifndef GAMEPLAY_DEVELOPER_EDITION
+						#ifndef GAMEPLAY_DEMOVERSION
+							scene->passHoldingTime( missionInfo->missionTime );
+						#endif
+					#endif
+				}
                 // equip is needed?
                 if( missionInfo->flags & database::mfForcedEquipment )
                 {

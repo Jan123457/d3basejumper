@@ -29,13 +29,12 @@ TournamentSource::TournamentSource(unsigned int locationId, Career* career)
         // filter tournaments from this location
         if( tournamentInfo->locationId == locationId )
         {
-			if ( Gameplay::iGameplay->freeModeIsEnabled() )
+			if ( Gameplay::iGameplay->_freeModeIsEnabled )
 			{
 				_tournaments.push_back( i );
-				break;
 			}
             // boogie tournament?
-            if( tournamentInfo->type == database::tfBoogie )
+            else if( tournamentInfo->type == database::tfBoogie )
             {
                 // check there is a boogie event in location
                 for( unsigned int j=0; j<career->getNumEvents(); j++ )

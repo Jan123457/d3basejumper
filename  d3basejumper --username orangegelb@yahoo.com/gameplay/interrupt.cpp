@@ -124,7 +124,8 @@ void Interrupt::messageCallback(gui::Message* message, void* userData)
         {
             __this->_endOfMode = true;
         }
-        // interrupt mission?
+        // interrupt mission? 
+		// This is used to abort a mission once started
         else if( strcmp( message->origin->getName(), "ActionInterrupt" ) == 0 )
         {
             if( __this->_payCredits ) 

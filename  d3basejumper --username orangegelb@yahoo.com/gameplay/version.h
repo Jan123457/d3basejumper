@@ -7,7 +7,7 @@
 #define VERSION_CONTROL_INCLUDED
 
 // uncomment this macro to compile developer's version
-#define GAMEPLAY_DEVELOPER_EDITION
+//#define GAMEPLAY_DEVELOPER_EDITION
 
 // uncomment and designate this macro to compile evaluation version
 // actually its value is a SYSTEMTIME initializer

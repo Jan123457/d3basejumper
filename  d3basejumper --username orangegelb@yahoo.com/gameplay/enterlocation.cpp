@@ -69,7 +69,16 @@ void EnterLocationDialog::onGuiMessage(gui::Message* message)
                 // determine holding time in scene
                 DateTime dateTime = _geoscape->getDateTime();
                 float currentDayTime = HOURS_TO_MINUTES( float( dateTime.hour ) ) + float( dateTime.minute );
-                float leftDayTime = maxHoldingTime - currentDayTime + HOURS_TO_MINUTES( 6 );
+				float leftDayTime;
+				if ( Gameplay::iGameplay->_freeModeIsEnabled )
+				{
+					leftDayTime = 720.0f;
+				}
+				else
+				{
+					leftDayTime = maxHoldingTime - currentDayTime + HOURS_TO_MINUTES( 6 );
+				}
+                //float leftDayTime = maxHoldingTime - currentDayTime + HOURS_TO_MINUTES( 6 );
                 if( leftDayTime > maxHoldingTime )
                 {
                     leftDayTime = maxHoldingTime;

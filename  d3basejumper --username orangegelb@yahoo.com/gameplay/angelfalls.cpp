@@ -18,14 +18,11 @@
 bool weatherClearanceAngelFalls(WeatherType weatherType)
 {
     // can't jump during bad weather unless user has the option enabled
-    if( Gameplay::iGameplay->weatherJumpingIsEnabled() )
+    if( Gameplay::iGameplay->_weatherJumpingIsEnabled )
 	{
 		return true;
-	}
-		
-	if( weatherType == wtLightRain ||
-    weatherType == wtHardRain ||
-    weatherType == wtThunder )
+	}		
+	else if( weatherType == wtLightRain || weatherType == wtHardRain || weatherType == wtThunder )
     {
         return false;
     }
@@ -38,8 +35,12 @@ bool weatherClearanceAngelFalls(WeatherType weatherType)
 
 bool windClearanceAngelFalls(Vector3f dir, float ambient, float blast)
 {
-    // can't jump during strong wind
-    if( 0.5f * ( ambient + blast ) > 9 )
+    // can't jump during strong wind unless user has the option enabled
+    if( Gameplay::iGameplay->_weatherJumpingIsEnabled )
+	{
+		return true;
+	}	
+    else if( 0.5f * ( ambient + blast ) > 9 )
     {
         return false;
     }
