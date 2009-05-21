@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="audio2"
 	ProjectGUID="{D7C54F0E-AF0A-4C83-BB0B-1E6CB2998FD1}"
+	RootNamespace="audio2"
 	SccProjectName=""
 	SccLocalPath="">
 	<Platforms>
@@ -89,13 +90,13 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				InlineFunctionExpansion="1"
-				OptimizeForProcessor="2"
+				InlineFunctionExpansion="0"
+				OptimizeForProcessor="1"
 				AdditionalIncludeDirectories="..\Includes\DirectX\Include;..\Includes\Ogg\include\ogg;..\Includes\Vorbis\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
-				RuntimeLibrary="2"
-				EnableFunctionLevelLinking="TRUE"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="FALSE"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile=".\Release/audio2.pch"
 				AssemblerListingLocation=".\Release/"
@@ -103,15 +104,18 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="0"
 				CallingConvention="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="d3dx9dt.lib winmm.lib dxguid.lib dxerr9.lib dsound.lib ogg_static.lib vorbis_static.lib vorbisenc_static.lib vorbisfile_static.lib"
 				OutputFile="../../game/sys/audio.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\Libraries"
+				GenerateDebugInformation="FALSE"
 				ProgramDatabaseFile=".\Release/audio2.pdb"
 				SubSystem="2"
 				ImportLibrary=".\Release/audio2.lib"

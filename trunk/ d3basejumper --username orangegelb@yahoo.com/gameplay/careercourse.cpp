@@ -1038,6 +1038,7 @@ void CareerCourse::onGuiMessage(gui::Message* message)
                     _geoscape->centerGeoscape( locationInfo->worldX, locationInfo->worldY );
                 }
             }
+		// Cheats to enable full health and $100 when clicking on character icon
             #ifdef GAMEPLAY_DEVELOPER_EDITION
                 _geoscape->getCareer()->getVirtues()->evolution.funds += 100.0f;
                 _geoscape->getCareer()->getVirtues()->evolution.score += 100.0f;
@@ -1194,8 +1195,14 @@ void CareerCourse::onGuiMessage(gui::Message* message)
         {
             Location* location = _geoscape->getLocation( message->origin );
             assert( location );
+			if ( Gameplay::iGameplay->_freeModeIsEnabled )
+			{
+				// enter to location
+                setTimeSpeed( ::tsPause );
+                setCareerDialog( new EnterLocationDialog( _geoscape, location ) );
+			}
             // click on current location?
-            if( location->getPlayer() )
+            else if( !Gameplay::iGameplay->_freeModeIsEnabled && location->getPlayer() )
             {
                 // check health
                 if( _geoscape->getCareer()->getVirtues()->evolution.health < 0.75f )
@@ -1219,6 +1226,7 @@ void CareerCourse::onGuiMessage(gui::Message* message)
                     }
                 }
             }
+
             else
             {
                 // travel to location

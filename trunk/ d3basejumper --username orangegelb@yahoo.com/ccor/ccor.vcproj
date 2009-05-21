@@ -104,9 +104,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				ShowProgress="0"
 				OutputFile="../../game/sys/game.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
+				IgnoreAllDefaultLibraries="FALSE"
 				ProgramDatabaseFile=".\Release/game.pdb"
 				SubSystem="2"
 				SetChecksum="TRUE"

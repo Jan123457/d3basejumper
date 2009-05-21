@@ -24,9 +24,10 @@
 				Optimization="3"
 				InlineFunctionExpansion="1"
 				OptimizeForProcessor="2"
-				AdditionalIncludeDirectories="..\Includes\Novodex\Cooking\include;..\Includes\Novodex\Physics\include;..\Includes\Novodex\Foundation\include;..\Includes\DirectX\Include;..\Includes\TinyXML\include"
+				AdditionalIncludeDirectories="..\Includes\Novodex\Foundation\include;..\Includes\Novodex\Cooking\include;..\Includes\Novodex\Physics\include;..\Includes\DirectX\Include;..\Includes\TinyXML\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
+				MinimalRebuild="FALSE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="2"
@@ -36,11 +37,13 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				CallingConvention="1"/>
+				CallingConvention="1"
+				ShowIncludes="FALSE"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				ShowProgress="0"
 				OutputFile="../../game/sys/gameplay.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"

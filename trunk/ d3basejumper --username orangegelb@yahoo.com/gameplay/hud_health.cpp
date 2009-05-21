@@ -83,7 +83,7 @@ void HealthStatus::onUpdateActivity(float dt)
     levelRect.bottom = 15;    
     level->setRect( levelRect );
 
-    // update tracking vessel
+    // update rigging vessel
     vessel = _skillsWindow->getPanel()->find( "RiggingVessel" ); assert( vessel );
     level  = vessel->find( "RiggingLevel" ); assert( level );
     vesselRect = vessel->getRect();
