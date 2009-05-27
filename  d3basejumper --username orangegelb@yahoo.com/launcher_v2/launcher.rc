@@ -149,10 +149,12 @@ BEGIN
                     9,324,8,8
     COMBOBOX        IDC_LANGUAGE,156,300,83,66,CBS_DROPDOWNLIST | WS_VSCROLL | 
                     WS_TABSTOP
-    CONTROL         "",IDC_WEATHER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,270,
-                    285,8,8
+    CONTROL         "",IDC_CHEATS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,270,
+                    289,8,8
     CONTROL         "",IDC_FREEMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     270,304,8,8
+    COMBOBOX        IDC_UNITS,388,273,84,57,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
 END
 
 IDD_VIDEOPLAYER DIALOGEX 0, 0, 370, 286

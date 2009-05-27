@@ -1107,6 +1107,9 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
 		</Filter>
 		<File
+			RelativePath=".\english.txt">
+		</File>
+		<File
 			RelativePath="..\Includes\TinyXML\include\tinystr.h">
 		</File>
 		<File

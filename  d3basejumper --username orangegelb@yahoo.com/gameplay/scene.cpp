@@ -818,7 +818,7 @@ void Scene::updateActivity(float dt)
     }
 
     // check player health
-    if( _career->getVirtues()->evolution.health < 0.75f )
+    if( _career->getVirtues()->evolution.health < 0.75f && !Gameplay::iGameplay->_freeModeIsEnabled )
     {
         #ifdef GAMEPLAY_DEMOVERSION
             // check top mode is not mission and not interrupt mode

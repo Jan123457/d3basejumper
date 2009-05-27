@@ -56,7 +56,8 @@ private:
     Missions              _userMissions;        // container for user missions
 public:
 	bool                  _freeModeIsEnabled; // allow all events at all locations
-	bool                  _weatherJumpingIsEnabled; // jumping in all weathers is enabled
+	bool                  _cheatsEnabled; // jumping in all weathers is enabled
+	bool                  _feetModeIsEnabled; // allow all events at all locations
 private:
     void createActionMap(void);
     void destroyActionMap(void);
@@ -110,10 +111,12 @@ public:
     inline bool getUnsafeCleanup(void) { return _isUnsafeCleanup; }
     inline void setUnsafeCleanup(bool isUnsafeCleanup) { _isUnsafeCleanup = isUnsafeCleanup; }
     inline bool pitchShiftIsEnabled(void) { return _pitchShiftIsEnabled; }
-    inline bool getweatherJumpingIsEnabled(void) { return _weatherJumpingIsEnabled; }
-    inline void setweatherJumpingIsEnabled(bool weatherJumpingIsEnabled) { _weatherJumpingIsEnabled = weatherJumpingIsEnabled; }
+    inline bool getcheatsEnabled(void) { return _cheatsEnabled; }
+    inline void setcheatsEnabled(bool cheatsEnabled) { _cheatsEnabled = cheatsEnabled; }
     inline bool getfreeModeIsEnabled(void) { return _freeModeIsEnabled; }
     inline void setfreeModeIsEnabled(bool freeModeIsEnabled) { _freeModeIsEnabled = freeModeIsEnabled; }
+    inline bool getfeetModeIsEnabled(void) { return _feetModeIsEnabled; }
+    inline void setfeetModeIsEnabled(bool feetModeIsEnabled) { _feetModeIsEnabled = feetModeIsEnabled; }
 public:
     static Gameplay*            iGameplay;
     static engine::IEngine*     iEngine;

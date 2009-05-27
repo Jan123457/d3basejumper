@@ -8,6 +8,11 @@
 #include "RegDialog.h"
 #include ".\launcherdlg.h"
 #include "keyboard.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -64,8 +69,9 @@ void ClauncherDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_SHADOWS, m_Shadows);
     DDX_Control(pDX, IDC_PITCH_SHIFT, m_PitchShift);
 	DDX_Control(pDX, IDC_LANGUAGE, m_Language);
-	DDX_Control(pDX, IDC_WEATHER, m_Weather);
+	DDX_Control(pDX, IDC_CHEATS, m_Cheats);
 	DDX_Control(pDX, IDC_FREEMODE, m_Freemode);
+	DDX_Control(pDX, IDC_UNITS, m_Units);
 }
 
 BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
@@ -109,8 +115,9 @@ BEGIN_MESSAGE_MAP(ClauncherDlg, CDialog)
     ON_BN_CLICKED(IDC_SHADOWS, OnBnClickedShadows)
     ON_BN_CLICKED(IDC_PITCH_SHIFT, OnBnClickedPitchShift)
 	ON_CBN_SELCHANGE(IDC_LANGUAGE, OnCbnSelchangeLanguage)
-	ON_BN_CLICKED(IDC_WEATHER, OnBnClickedWeather)
 	ON_BN_CLICKED(IDC_FREEMODE, OnBnClickedFreemode)
+	ON_BN_CLICKED(IDC_CHEATS, OnBnClickedCheats)
+	ON_CBN_SELCHANGE(IDC_UNITS, OnCbnSelchangeUnits)
 END_MESSAGE_MAP()
 
 
@@ -185,8 +192,11 @@ BOOL ClauncherDlg::OnInitDialog()
 
     // load config
     m_config = new TiXmlDocument( "./cfg/config.xml" );
+	m_gui = new TiXmlDocument( "./res/gui/gui.xml" );
     bool configIsLoaded = m_config->LoadFile();
+	bool guiIsLoaded = m_gui->LoadFile();
     assert( configIsLoaded );
+	assert( guiIsLoaded );
 
 	// initialize directx
     m_iDirect3D9  = Direct3DCreate9( D3D_SDK_VERSION ); assert( m_iDirect3D9 );
@@ -356,6 +366,12 @@ BOOL ClauncherDlg::OnInitDialog()
     stringId = m_Language.AddString( "Deutsch" );
 	m_Language.SetItemData( stringId, 3 );
 
+	// fill Units control
+    stringId = m_Units.AddString( "Meters" );
+    m_Units.SetItemData( stringId, 0 );
+    stringId = m_Units.AddString( "Feet" );
+    m_Units.SetItemData( stringId, 1 );
+
     // show crowd density
     double value;
     details->Attribute( "crowd", &value );
@@ -465,15 +481,15 @@ BOOL ClauncherDlg::OnInitDialog()
     }
 
 	// show jump in all weathers option
-    int weather;
-    details->Attribute( "weather", &weather );
-    if( weather == 0 )
+    int cheats;
+    details->Attribute( "cheats", &cheats );
+    if( cheats == 0 )
     {
-        m_Weather.SetCheck( 0 );
+        m_Cheats.SetCheck( 0 );
     }
     else
     {
-        m_Weather.SetCheck( 1 );
+        m_Cheats.SetCheck( 1 );
     }
 
 	// show jump free mode / career option
@@ -486,6 +502,20 @@ BOOL ClauncherDlg::OnInitDialog()
     else
     {
         m_Freemode.SetCheck( 1 );
+    }
+
+	// show units range
+    details->Attribute( "units", &value );
+    int iUnits = int( value );
+    for( i=0; i<m_Units.GetCount(); i++ )
+    {
+        int itemData = int( m_Units.GetItemData( i ) );
+        if( iUnits == itemData )
+        {
+            m_Units.SetCurSel( i );
+            optionIsSelected = true;
+            break;
+        }
     }
 
     // show action mapping
@@ -586,8 +616,9 @@ void ClauncherDlg::OnPaint()
         m_Shadows.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         m_PitchShift.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
 		m_Language.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
-		m_Weather.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
+		m_Cheats.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
 		m_Freemode.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
+		m_Units.RedrawWindow( NULL, NULL, RDW_INVALIDATE );
         // draw all
         CDialog::OnPaint();
 	}
@@ -668,7 +699,8 @@ void ClauncherDlg::OnCbnSelchangeAdapter()
 void ClauncherDlg::OnDestroy()
 {
     m_iDirect3D9->Release();
-    delete m_config;    
+    delete m_config;
+	delete m_gui;
 
     CDialog::OnDestroy();
 }
@@ -1181,27 +1213,6 @@ void ClauncherDlg::OnCbnSelchangeLanguage()
     m_config->SaveFile();
 }
 
-void ClauncherDlg::OnBnClickedWeather()
-{
-	// retrieve configuration element for jumping in all weathers
-    TiXmlElement* details = getConfigElement( "details" ); assert( details );
-
-    // change settings
-    int checkStatus = m_Weather.GetCheck();
-    if( checkStatus )
-    {
-        details->SetAttribute( "weather", 1 );
-    }
-    else
-    {
-        details->SetAttribute( "weather", 0 );
-    }
-
-    // save config
-    m_config->SaveFile();
-}
-
-
 void ClauncherDlg::OnBnClickedFreemode()
 {
 	// retrieve configuration element for freemode
@@ -1220,4 +1231,105 @@ void ClauncherDlg::OnBnClickedFreemode()
 
 	// save config
 	m_config->SaveFile();
+}
+
+void ClauncherDlg::OnBnClickedCheats()
+{
+	// retrieve configuration element for jumping in all weathers
+    TiXmlElement* details = getConfigElement( "details" ); assert( details );
+
+    // change settings
+    int checkStatus = m_Cheats.GetCheck();
+    if( checkStatus )
+    {
+        details->SetAttribute( "cheats", 1 );
+    }
+    else
+    {
+        details->SetAttribute( "cheats", 0 );
+    }
+
+    // save config
+    m_config->SaveFile();
+}
+
+void ClauncherDlg::OnCbnSelchangeUnits()
+	{	
+		// retrieve configuration element for meters or fee
+		// need to add code to load language files and change M to F and vice versa
+		// will need to do it for all languages at the same time
+		TiXmlElement* details = getConfigElement( "details" ); assert( details );		
+		int iUnits = int( m_Units.GetItemData( m_Units.GetCurSel()));
+		details->SetAttribute( "units", iUnits );
+		// save config
+		m_config->SaveFile();
+
+		if (iUnits == 0)
+		{
+			TiXmlElement* Units = getGuiElementUnits( "Units", "Altimeter", 213 ); assert( Units );
+			TiXmlElement* Units2 = getGuiElementUnits( "Units", "Variometer", 213 ); assert( Units );
+			TiXmlElement* AuUnits = getGuiElementAuUnits( "AuUnits", 213 ); assert( AuUnits );
+		}
+		else if (iUnits == 1)
+		{
+			TiXmlElement* Units = getGuiElementUnits( "Units", "Altimeter", 851 ); assert( Units );
+			TiXmlElement* Units2 = getGuiElementUnits( "Units", "Variometer", 852 ); assert( Units );
+			TiXmlElement* AuUnits = getGuiElementAuUnits( "AuUnits", 851 ); assert( AuUnits );
+		}
+		m_gui->SaveFile();
+	}
+
+TiXmlElement* ClauncherDlg::getGuiElementUnits(const char* name, const char* name2, int textId)
+{
+    TiXmlNode* child = m_gui->FirstChild(); assert( child );
+
+    if( child != NULL ) do 
+    {
+		if( child->Type() == TiXmlNode::ELEMENT && strcmp( child->Value(), "window" ) == 0 )
+        {
+			if( strcmp( static_cast<TiXmlElement*>( child )->Attribute( "name" ), name2) == 0 )
+			{
+				for ( child->FirstChildElement( "statictext" ) ;child; child = child->NextSiblingElement())
+				{	
+					if (strcmp( static_cast<TiXmlElement*>( child )->FirstChildElement ( "statictext" )->Attribute( "name" ), name ) == 0 )
+					{
+						child->FirstChildElement( "statictext" )->SetAttribute( "textId", textId);
+						return static_cast<TiXmlElement*>( child );
+					}
+				}
+				return static_cast<TiXmlElement*>( child );
+			}
+        }
+        child = child->NextSibling();
+    }
+    while( child != NULL );
+    return NULL;
+}
+
+TiXmlElement* ClauncherDlg::getGuiElementAuUnits(const char* name, int textId)
+{
+    TiXmlNode* child = m_gui->FirstChild(); assert( child );
+
+    if( child != NULL ) do 
+    {
+		if( child->Type() == TiXmlNode::ELEMENT && strcmp( child->Value(), "window" ) == 0 )
+        {
+			if( strcmp( static_cast<TiXmlElement*>( child )->Attribute( "name" ), "Altimeter" ) == 0 )
+			{
+				for ( child->FirstChildElement( "statictext" ) ;child; child = child->NextSiblingElement())
+				{	
+
+				if (strcmp( static_cast<TiXmlElement*>( child )->FirstChildElement ( "statictext" )->NextSiblingElement ( "statictext" )->NextSiblingElement ( "statictext" ) ->Attribute( "name" ), name ) == 0 )
+					{
+						child->FirstChildElement( "statictext" )->NextSiblingElement ( "statictext" )->NextSiblingElement ( "statictext" )->SetAttribute( "textId", textId);
+						return static_cast<TiXmlElement*>( child );
+					}
+				}
+				return static_cast<TiXmlElement*>( child );
+			}
+        }
+        child = child->NextSibling();
+    }
+    while( child != NULL );
+    return NULL;
 }

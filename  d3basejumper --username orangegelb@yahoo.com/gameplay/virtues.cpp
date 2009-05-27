@@ -416,7 +416,7 @@ float Virtues::getHorizontalAligment(void)
 float Virtues::onJumperDamage(float damage)
 {
     // first, absorb damage by helmet
-    // note that fatal damage won't absorbed!
+    // note that fatal damage won't be absorbed!
     database::Helmet* helmetInfo = database::Helmet::getRecord( equipment.helmet.id );
     float absorbedDamage = damage * ( helmetInfo->Kda * equipment.helmet.state );
     float helmetDamage = damage * helmetInfo->Kage;

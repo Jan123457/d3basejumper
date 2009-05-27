@@ -1066,6 +1066,9 @@
 			RelativePath=".\engine.rc">
 		</File>
 		<File
+			RelativePath=".\gui.xml">
+		</File>
+		<File
 			RelativePath=".\resource.h">
 		</File>
 		<File

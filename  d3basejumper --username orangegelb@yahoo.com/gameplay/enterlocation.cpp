@@ -70,6 +70,7 @@ void EnterLocationDialog::onGuiMessage(gui::Message* message)
                 DateTime dateTime = _geoscape->getDateTime();
                 float currentDayTime = HOURS_TO_MINUTES( float( dateTime.hour ) ) + float( dateTime.minute );
 				float leftDayTime;
+				// set time left to jump to max if were in freemode
 				if ( Gameplay::iGameplay->_freeModeIsEnabled )
 				{
 					leftDayTime = 720.0f;

@@ -1038,7 +1038,15 @@ void CareerCourse::onGuiMessage(gui::Message* message)
                     _geoscape->centerGeoscape( locationInfo->worldX, locationInfo->worldY );
                 }
             }
-		// Cheats to enable full health and $100 when clicking on character icon
+			// Cheats to enable full health, increase score and add $100 when clicking on character icon
+			if ( Gameplay::iGameplay->_cheatsEnabled )
+			{
+				_geoscape->getCareer()->getVirtues()->evolution.funds += 100.0f;
+                _geoscape->getCareer()->getVirtues()->evolution.score += 100.0f;
+                _geoscape->getCareer()->getVirtues()->evolution.health = 1.0f;
+				_geoscape->getCareer()->getVirtues()->evolution.credits = 3;
+                _geoscape->addHistory( Gameplay::iLanguage->getUnicodeString(631), Vector4f( 1, 0.25f, 0.25f, 1 ) );
+			}
             #ifdef GAMEPLAY_DEVELOPER_EDITION
                 _geoscape->getCareer()->getVirtues()->evolution.funds += 100.0f;
                 _geoscape->getCareer()->getVirtues()->evolution.score += 100.0f;

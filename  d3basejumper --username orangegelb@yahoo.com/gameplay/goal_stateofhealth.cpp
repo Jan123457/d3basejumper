@@ -30,6 +30,10 @@ GoalStateOfHealth::~GoalStateOfHealth()
             // credits is not affected for licensed character
             creditsIsAffected = !_scene->getCareer()->getLicensedFlag();
             // credits is not affected in developer edition
+			if ( Gameplay::iGameplay->_cheatsEnabled )
+			{
+				creditsIsAffected = false;
+			}
             #ifdef GAMEPLAY_DEVELOPER_EDITION
                 creditsIsAffected = false;
             #endif

@@ -31,6 +31,12 @@ void Variometer::onUpdateActivity(float dt)
         // absolute units conversion
         float meters = fabs( fall ) * 0.01f * 10;
         int units = int( meters );
+		// Are we using feet units?
+		if ( Gameplay::iGameplay->_feetModeIsEnabled )
+		{
+			float feet = fabs( fall ) * 0.01f *10 * 3.2808399f;
+			units = int( feet );
+		}
 
         // digits pickup
         int digit = units % 10;
