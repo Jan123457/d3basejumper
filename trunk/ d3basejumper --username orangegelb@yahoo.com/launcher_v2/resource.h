@@ -31,8 +31,7 @@
 #define IDC_OCX1                        1017
 #define IDC_FOREST                      1017
 #define IDC_PITCH_SHIFT                 1018
-#define IDC_WEATHER                     1019
-#define IDC_WEATHER2                    1020
+#define IDC_CHEATS                      1019
 #define IDC_FREEMODE                    1020
 #define IDC_SLIDER1                     1032
 #define IDC_FIRSTPERSONMODE             1033
@@ -72,6 +71,8 @@
 #define IDC_DECREASE_TIMEFLOW           1056
 #define IDC_INCREASE_MUSIC_VOLUME       1057
 #define IDC_DECREASE_MUSIC_VOLUME       1058
+#define IDC_DECREASE_MUSIC_VOLUME2      1059
+#define IDC_UNITS                       1059
 
 // Next default values for new objects
 // 

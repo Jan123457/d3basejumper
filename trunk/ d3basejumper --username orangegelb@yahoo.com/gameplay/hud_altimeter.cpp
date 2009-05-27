@@ -40,9 +40,13 @@ void Altimeter::onUpdateActivity(float dt)
         setSignumIndicator( _window->getPanel()->find( "Digit5" ), altitude );        
 
         // absolute units conversion
-        float meters = fabs( altitude ) * 0.01f;
-        int units = int( meters );
-
+		float meters = fabs( altitude ) * 0.01f ;
+		int units = int( meters );
+		if ( Gameplay::iGameplay->_feetModeIsEnabled )
+		{
+			float feet = fabs( altitude ) * 0.01f * 3.2808399f;
+			units = int( feet );
+		}
         // digits pickup
         int digit = units % 10;
         setIndicator( _window->getPanel()->find( "Digit0" ), digit );
@@ -73,9 +77,14 @@ void Altimeter::onUpdateActivity(float dt)
         else
         {
             auCaption->getStaticText()->setText( Gameplay::iLanguage->getUnicodeString(216) );
-        }        
+        }      
 
-        // audible altimeter signum indicator
+	    // update altimeter units
+  //      gui::IGuiPanel* auUnits = _window->getPanel()->find( "AuUnits" );
+  //      assert( auUnits && auUnits->getStaticText() );
+		//auUnits->getStaticText()->setText( Gameplay::iLanguage->getUnicodeString(213) );
+
+		// audible altimeter signum indicator
         setSignumIndicator( _window->getPanel()->find( "AuDigit5" ), _state->altitude );
 
         // absolute units conversion

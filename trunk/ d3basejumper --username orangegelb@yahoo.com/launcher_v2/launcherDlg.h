@@ -73,6 +73,7 @@ public:
 protected:
 	HICON                m_hIcon;
     TiXmlDocument*       m_config;
+	TiXmlDocument*       m_gui;
     IDirect3D9*          m_iDirect3D9;
     int                  m_numAdapters;
 
@@ -81,6 +82,8 @@ protected:
 
     // manual methods
     TiXmlElement* getConfigElement(const char* name);
+	TiXmlElement* getGuiElementUnits(const char* name, const char* name2, int textId);
+	TiXmlElement* getGuiElementAuUnits(const char* name, int textId);
     TiXmlElement* getActionElement(const char* actionName);
 
     // callback engine
@@ -114,6 +117,7 @@ public:
     CComboBox m_Crowd;
     CComboBox m_Traffic;
 	CComboBox m_Language;
+	CComboBox m_Units;
     afx_msg void OnCbnSelchangeCrowd();
     afx_msg void OnCbnSelchangeTraffic();
     afx_msg void OnBnClickedGrass();
@@ -142,6 +146,7 @@ public:
     CComboBox mctrl_IncreaseMusic;
     CComboBox mctrl_DecreaseMusic;
 	CComboBox mctrl_Language;
+	CComboBox mctrl_Units;
     afx_msg void OnCbnSelchangeLeft();
     afx_msg void OnCbnSelchangeUp();
     afx_msg void OnCbnSelchangeDown();
@@ -169,10 +174,11 @@ public:
     afx_msg void OnCbnSelchangeForest();
     afx_msg void OnBnClickedShadows();
     CButton m_PitchShift;
-	CButton m_Weather;
+	CButton m_Cheats;
 	CButton m_Freemode;
     afx_msg void OnBnClickedPitchShift();
 	afx_msg void OnCbnSelchangeLanguage();
-	afx_msg void OnBnClickedWeather();
 	afx_msg void OnBnClickedFreemode();
+	afx_msg void OnBnClickedCheats();
+	afx_msg void OnCbnSelchangeUnits();
 };

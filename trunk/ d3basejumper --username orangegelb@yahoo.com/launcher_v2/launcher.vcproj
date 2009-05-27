@@ -259,6 +259,9 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath=".\english.xml">
+		</File>
+		<File
 			RelativePath=".\res\launcher.manifest">
 		</File>
 		<File
